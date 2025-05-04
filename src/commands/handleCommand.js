@@ -8,6 +8,7 @@ const {
   copy,
   move,
 } = require("./operations");
+const systemInfo = require("./systemInfo");
 
 async function handleCommand(input, currentDir) {
   const [command, ...args] = input.split(" ");
@@ -40,6 +41,9 @@ async function handleCommand(input, currentDir) {
         break;
       case "mv":
         await move(currentDir, args[0], args[1]);
+        break;
+      case "os":
+        await systemInfo(args[0]);
         break;
       default:
         console.log("Command not found. Please try again.");
