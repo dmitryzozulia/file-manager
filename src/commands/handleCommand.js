@@ -9,6 +9,7 @@ const {
   move,
 } = require("./operations");
 const systemInfo = require("./systemInfo");
+const hashCalculation = require("./hashCalculation");
 
 async function handleCommand(input, currentDir) {
   const [command, ...args] = input.split(" ");
@@ -44,6 +45,9 @@ async function handleCommand(input, currentDir) {
         break;
       case "os":
         await systemInfo(args[0]);
+        break;
+      case "hash":
+        await hashCalculation(currentDir, args[0]);
         break;
       default:
         console.log("Command not found. Please try again.");

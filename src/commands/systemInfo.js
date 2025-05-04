@@ -1,7 +1,10 @@
 const os = require("os");
 
 const systemInfo = async (infoType) => {
-  console.log("OS info requested:", infoType);
+  if (!infoType) {
+    console.log("OS info operation failed. Info type is not provided.");
+    return;
+  }
   switch (infoType.replace("--", "")) {
     case "EOL":
       console.log("EOL:", JSON.stringify(os.EOL));
