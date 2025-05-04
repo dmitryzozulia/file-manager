@@ -10,6 +10,8 @@ const {
 } = require("./operations");
 const systemInfo = require("./systemInfo");
 const hashCalculation = require("./hashCalculation");
+const compress = require("./compress");
+const decompress = require("./decompress");
 
 async function handleCommand(input, currentDir) {
   const [command, ...args] = input.split(" ");
@@ -48,6 +50,12 @@ async function handleCommand(input, currentDir) {
         break;
       case "hash":
         await hashCalculation(currentDir, args[0]);
+        break;
+      case "compress":
+        await compress(currentDir, args[0], args[1]);
+        break;
+      case "decompress":
+        await decompress(currentDir, args[0], args[1]);
         break;
       default:
         console.log("Command not found. Please try again.");

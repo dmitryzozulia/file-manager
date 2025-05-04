@@ -101,7 +101,7 @@ const copy = async (currentDir, source, destination) => {
     return;
   }
   const sourcePath = path.join(currentDir, source);
-  const destPath = path.join(currentDir, destination);
+  const destPath = path.join(currentDir, `${destination}/${source}`);
   if (!fs.existsSync(sourcePath)) {
     console.log("FS operation failed. Source file does not exist.");
     return;
@@ -116,7 +116,7 @@ const copy = async (currentDir, source, destination) => {
   }
   try {
     await fs.promises.copyFile(sourcePath, destPath);
-    console.log(`File copied from ${source} to ${destination} successfully.`);
+    console.log(`File copied from ${sourcePath} to ${destPath} successfully.`);
   } catch (err) {
     console.error("Error copying file:", err.message);
   }

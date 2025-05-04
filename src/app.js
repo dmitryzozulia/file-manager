@@ -13,6 +13,7 @@ let currentDir = os.homedir();
 
 const displayCurrentDirectory = () => {
   console.log("You are currently in", currentDir);
+  rl.prompt();
 };
 
 const startApp = () => {

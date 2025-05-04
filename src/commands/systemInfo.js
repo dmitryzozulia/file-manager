@@ -5,7 +5,7 @@ const systemInfo = async (infoType) => {
     console.log("OS info operation failed. Info type is not provided.");
     return;
   }
-  switch (infoType.replace("--", "")) {
+  switch (infoType.slice(2)) {
     case "EOL":
       console.log("EOL:", JSON.stringify(os.EOL));
       break;
