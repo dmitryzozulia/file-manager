@@ -1,8 +1,8 @@
-const { createHash } = require("node:crypto");
-const fs = require("node:fs");
-const path = require("node:path");
+import { createHash } from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
 
-const hashCalculation = async (currentDir, filePath) => {
+export const hashCalculation = async (currentDir, filePath) => {
   if (!filePath) {
     console.log("FS operation failed. File path is not provided.");
     return;
@@ -34,5 +34,3 @@ const hashCalculation = async (currentDir, filePath) => {
     }
   });
 };
-
-module.exports = hashCalculation;

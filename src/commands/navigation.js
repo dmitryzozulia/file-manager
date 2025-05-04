@@ -1,7 +1,7 @@
-const fs = require("node:fs");
-const path = require("node:path");
+import fs from "node:fs";
+import path from "node:path";
 
-const up = (currentDir) => {
+export const up = (currentDir) => {
   const parentDirectory = path.resolve(currentDir, "..");
   if (fs.existsSync(parentDirectory)) {
     return parentDirectory;
@@ -10,7 +10,7 @@ const up = (currentDir) => {
   }
 };
 
-const cd = (currentDir, targetDir) => {
+export const cd = (currentDir, targetDir) => {
   const newPath = path.resolve(currentDir, targetDir);
   if (fs.existsSync(newPath)) {
     return newPath;
@@ -19,7 +19,7 @@ const cd = (currentDir, targetDir) => {
   }
 };
 
-const ls = (currentDir) => {
+export const ls = (currentDir) => {
   const items = fs.readdirSync(currentDir).sort((a, b) => a.localeCompare(b));
   const files = items.filter((file) =>
     fs.statSync(path.join(currentDir, file)).isFile()
@@ -39,5 +39,3 @@ const ls = (currentDir) => {
   });
   console.table(output);
 };
-
-module.exports = { up, cd, ls };

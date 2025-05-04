@@ -1,5 +1,5 @@
-const { up, cd, ls } = require("./navigation");
-const {
+import { up, cd, ls } from "./navigation.js";
+import {
   readFile,
   addFile,
   createDirectory,
@@ -7,13 +7,13 @@ const {
   remove,
   copy,
   move,
-} = require("./operations");
-const systemInfo = require("./systemInfo");
-const hashCalculation = require("./hashCalculation");
-const compress = require("./compress");
-const decompress = require("./decompress");
+} from "./operations.js";
+import { systemInfo } from "./systemInfo.js";
+import { hashCalculation } from "./hashCalculation.js";
+import { compress } from "./compress.js";
+import { decompress } from "./decompress.js";
 
-async function handleCommand(input, currentDir) {
+export async function handleCommand(input, currentDir) {
   const [command, ...args] = input.split(" ");
   try {
     switch (command) {
@@ -62,8 +62,6 @@ async function handleCommand(input, currentDir) {
         break;
     }
   } catch (error) {
-    console.error("Operation falied. Please try again.\n", error.message);
+    console.error("Operation failed. Please try again.\n", error.message);
   }
 }
-
-module.exports = { handleCommand };

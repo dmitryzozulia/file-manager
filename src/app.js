@@ -1,6 +1,6 @@
-const readline = require("readline");
-const os = require("os");
-const { handleCommand } = require("./commands/handleCommand");
+import readline from "readline";
+import os from "os";
+import { handleCommand } from "./commands/handleCommand.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -33,4 +33,5 @@ const startApp = () => {
       });
   });
 };
+
 startApp();

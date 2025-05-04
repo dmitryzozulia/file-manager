@@ -1,7 +1,7 @@
-const fs = require("node:fs");
-const path = require("node:path");
+import fs from "node:fs";
+import path from "node:path";
 
-const readFile = async (currentDir, filePath) => {
+export const readFile = async (currentDir, filePath) => {
   if (!filePath) {
     console.log("FS operation failed. File path is not provided.");
     return;
@@ -13,7 +13,7 @@ const readFile = async (currentDir, filePath) => {
   });
 };
 
-const addFile = async (currentDir, fileName) => {
+export const addFile = async (currentDir, fileName) => {
   if (!fileName) {
     console.log("FS operation failed. File name is not provided.");
     return;
@@ -31,7 +31,7 @@ const addFile = async (currentDir, fileName) => {
   }
 };
 
-const createDirectory = async (currentDir, dirName) => {
+export const createDirectory = async (currentDir, dirName) => {
   if (!dirName) {
     console.log("FS operation failed. Directory name is not provided.");
     return;
@@ -49,7 +49,7 @@ const createDirectory = async (currentDir, dirName) => {
   }
 };
 
-const rename = async (currentDir, oldName, newName) => {
+export const rename = async (currentDir, oldName, newName) => {
   if (!oldName || !newName) {
     console.log("FS operation failed. Old name or new name is not provided.");
     return;
@@ -77,7 +77,7 @@ const rename = async (currentDir, oldName, newName) => {
   }
 };
 
-const remove = async (currentDir, fileName) => {
+export const remove = async (currentDir, fileName) => {
   if (!fileName) {
     console.log("FS operation failed. File name is not provided.");
     return;
@@ -95,7 +95,7 @@ const remove = async (currentDir, fileName) => {
   }
 };
 
-const copy = async (currentDir, source, destination) => {
+export const copy = async (currentDir, source, destination) => {
   if (!source || !destination) {
     console.log("FS operation failed. Source or destination is not provided.");
     return;
@@ -122,17 +122,7 @@ const copy = async (currentDir, source, destination) => {
   }
 };
 
-const move = async (currentDir, source, destination) => {
+export const move = async (currentDir, source, destination) => {
   await copy(currentDir, source, destination);
   await remove(currentDir, source);
-};
-
-module.exports = {
-  readFile,
-  addFile,
-  createDirectory,
-  rename,
-  remove,
-  copy,
-  move,
 };

@@ -1,6 +1,6 @@
-const os = require("os");
+import os from "node:os";
 
-const systemInfo = async (infoType) => {
+export const systemInfo = async (infoType) => {
   if (!infoType) {
     console.log("OS info operation failed. Info type is not provided.");
     return;
@@ -33,5 +33,3 @@ const systemInfo = async (infoType) => {
       console.log("Invalid OS info type. Please try again.");
   }
 };
-
-module.exports = systemInfo;

@@ -1,9 +1,9 @@
-const fs = require("node:fs");
-const zlib = require("node:zlib");
-const path = require("node:path");
-const { pipeline } = require("node:stream/promises");
+import fs from "node:fs";
+import zlib from "node:zlib";
+import path from "node:path";
+import { pipeline } from "node:stream/promises";
 
-const decompress = async (currentDir, source, destination) => {
+export const decompress = async (currentDir, source, destination) => {
   const absoluteSourcePath = path.resolve(currentDir, source);
   const absoluteDestinationPath = path.resolve(currentDir, destination);
 
@@ -19,5 +19,3 @@ const decompress = async (currentDir, source, destination) => {
     return;
   }
 };
-
-module.exports = decompress;
