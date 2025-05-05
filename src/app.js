@@ -20,7 +20,13 @@ const startApp = () => {
   console.log(`Welcome to the File Manager, ${userName}!`);
   displayCurrentDirectory();
   rl.on("line", (input) => {
-    handleCommand(input.trim(), currentDir)
+    const trimmedInput = input.trim();
+    if (trimmedInput === ".exit") {
+      console.log(`\nThank you for using File Manager, ${userName}, goodbye!`);
+      rl.close();
+      process.exit(0);
+    }
+    handleCommand(trimmedInput, currentDir)
       .then((result) => {
         if (result) {
           currentDir = result;
@@ -35,3 +41,9 @@ const startApp = () => {
 };
 
 startApp();
+
+rl.on("SIGINT", () => {
+  console.log(`\nThank you for using File Manager, ${userName}, goodbye!`);
+  rl.close();
+  process.exit(0);
+});

@@ -7,6 +7,14 @@ export const readFile = async (currentDir, filePath) => {
     return;
   }
   const absolutePath = path.resolve(currentDir, filePath);
+  if (!fs.existsSync(absolutePath)) {
+    console.log("FS operation failed. File does not exist.");
+    return;
+  }
+  if (!fs.statSync(absolutePath).isFile()) {
+    console.log("FS operation failed. Path is not a file.");
+    return;
+  }
   const readStream = fs.createReadStream(absolutePath);
   readStream.on("data", (chunk) => {
     console.log("Reading chunk:", chunk.toString());
